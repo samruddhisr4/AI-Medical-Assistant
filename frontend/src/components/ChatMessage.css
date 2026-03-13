@@ -1,0 +1,236 @@
+/* ===== Message Wrapper ===== */
+.message-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-wrapper {
+    flex-direction: row-reverse;
+}
+
+.assistant-wrapper {
+    flex-direction: row;
+}
+
+/* ===== Avatars ===== */
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.assistant-avatar {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.3);
+}
+
+.user-avatar {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Bubbles ===== */
+.message-bubble {
+    max-width: 75%;
+    position: relative;
+}
+
+.user-bubble {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 18px 18px 4px 18px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+}
+
+.assistant-bubble {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 18px 18px 18px 4px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    min-width: 300px;
+}
+
+.user-text {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.message-time {
+    display: block;
+    font-size: 10px;
+    opacity: 0.5;
+    margin-top: 6px;
+    text-align: right;
+    color: inherit;
+}
+
+.plain-response {
+    padding: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== Response Card ===== */
+.response-card {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ===== Urgency Badge ===== */
+.urgency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+    letter-spacing: 0.3px;
+}
+
+/* ===== Card Sections ===== */
+.card-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.section-icon {
+    font-size: 14px;
+}
+
+.section-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== Tag Lists ===== */
+.tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+}
+
+.tag-symptom {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.tag-doctor {
+    color: #06b6d4;
+    background: rgba(6, 182, 212, 0.1);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* ===== Causes List ===== */
+.causes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cause-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.cause-bullet {
+    color: var(--accent-secondary);
+    font-size: 16px;
+    margin-top: -2px;
+    flex-shrink: 0;
+}
+
+/* ===== Advice Section ===== */
+.advice-section {
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+/* ===== Disclaimer ===== */
+.disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.disclaimer span {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .message-bubble {
+        max-width: 90%;
+    }
+
+    .assistant-bubble {
+        min-width: unset;
+    }
+}

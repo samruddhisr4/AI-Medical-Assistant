@@ -1,0 +1,21 @@
+{
+    "name": "mediassist",
+    "version": "1.0.0",
+    "description": "AI Medical Assistant - Full Stack Application",
+    "scripts": {
+        "dev:backend": "cd backend && npm run dev",
+        "dev:frontend": "cd frontend && npm run dev",
+        "install:all": "cd backend && npm install && cd ../frontend && npm install",
+        "start:backend": "cd backend && npm start"
+    },
+    "keywords": [
+        "medical",
+        "ai",
+        "assistant",
+        "react",
+        "nodejs",
+        "openai"
+    ],
+    "author": "",
+    "license": "MIT"
+}
