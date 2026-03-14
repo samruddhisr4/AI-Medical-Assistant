@@ -118,35 +118,28 @@ function StructuredResponse({ data }) {
 
       {data.symptoms?.length > 0 && (
         <div className="response-section">
-          <div className="response-section-title">Key Observations</div>
+          <div className="response-section-title">Symptoms</div>
           <div className="response-tags">
             {data.symptoms.map((s, i) => <span key={i} className="tag symptom">{s}</span>)}
           </div>
         </div>
       )}
 
-      {data.possibleCauses?.length > 0 && (
+      {(data.possibleConditions || data.possibleCauses)?.length > 0 && (
         <div className="response-section">
-          <div className="response-section-title">Potential Considerations</div>
+          <div className="response-section-title">Possible Condition</div>
           <ul className="response-causes">
-            {data.possibleCauses.map((c, i) => <li key={i}>{c}</li>)}
+            {(data.possibleConditions || data.possibleCauses).map((c, i) => <li key={i}>{c}</li>)}
           </ul>
         </div>
       )}
 
-      {data.recommendedDoctors?.length > 0 && (
+      {(data.recommendedDoctorTypes || data.recommendedDoctors)?.length > 0 && (
         <div className="response-section">
-          <div className="response-section-title">Recommended Consultation</div>
+          <div className="response-section-title">Recommended Doctor Type</div>
           <div className="response-tags">
-            {data.recommendedDoctors.map((d, i) => <span key={i} className="tag doctor">{d}</span>)}
+            {(data.recommendedDoctorTypes || data.recommendedDoctors).map((d, i) => <span key={i} className="tag doctor">{d}</span>)}
           </div>
-        </div>
-      )}
-
-      {data.generalAdvice && (
-        <div className="response-section">
-          <div className="response-section-title">Next Steps & Guidance</div>
-          <p className="response-advice">{data.generalAdvice}</p>
         </div>
       )}
 
@@ -160,19 +153,25 @@ function StructuredResponse({ data }) {
 /* ─── Message Row ─────────────────────────────────── */
 function MessageRow({ message }) {
   const isUser = message.role === 'user';
-  return (
-    <div className={`message-row ${isUser ? 'user-msg' : 'bot-msg'}`}>
-      <div className="message-header">
-        <div className={`msg-avatar ${isUser ? 'user-av' : 'bot-av'}`}>
-          {isUser ? 'You' : '🩺'}
+
+  if (isUser) {
+    return (
+      <div className="message-row user-row">
+        <div className="user-bubble">
+          {message.content}
         </div>
-        <span className="msg-name">{isUser ? 'You' : 'MediAssist'}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="message-row bot-row">
+      <div className="message-header">
+        <div className="msg-avatar bot-av">🩺</div>
+        <span className="msg-name">MediAssist</span>
       </div>
       <div className="msg-body">
-        {isUser
-          ? <p>{message.content}</p>
-          : <StructuredResponse data={message.content} />
-        }
+        <StructuredResponse data={message.content} />
       </div>
     </div>
   );
