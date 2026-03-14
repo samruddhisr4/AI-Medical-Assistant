@@ -49,6 +49,11 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'MediAssist API is running 🩺', timestamp: new Date().toISOString() });
 });
 
+// Root route so visiting the backend URL doesn't show an error
+app.get('/', (req, res) => {
+    res.send('Welcome to the MediAssist API Backend! 🩺');
+});
+
 // 404 handler
 app.use((req, res) => {
     res.status(404).json({ error: 'Route not found' });
