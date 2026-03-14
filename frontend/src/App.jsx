@@ -310,7 +310,11 @@ function Auth({ onLogin }) {
       const res = await axios.post(`${API_BASE}${endpoint}`, formData);
       onLogin(res.data);
     } catch (err) {
-      setError(err.response?.data?.error || 'Authentication failed');
+      if (err.message === 'Network Error') {
+        setError('Network Error: Cannot reach the server. Make sure your VITE_API_URL is set in Vercel to point to your Render backend.');
+      } else {
+        setError(err.response?.data?.error || 'Authentication failed');
+      }
     } finally {
       setLoading(false);
     }
