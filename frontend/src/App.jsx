@@ -3,7 +3,8 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const envUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, ''); // Remove trailing slashes
+const API_BASE = envUrl ? (envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`) : 'http://localhost:5000/api';
 
 /* ─── helpers ─────────────────────────────────────── */
 function tryParse(str) {
